@@ -24,6 +24,7 @@ testStringRegex = do
   assert $ "quxbarfoobaz" == replace (unsafeRegex "foo" noFlags) "qux" "foobarfoobaz"
   assert $ "quxbarquxbaz" == replace (unsafeRegex "foo" global) "qux" "foobarfoobaz"
   assert $ "quxbarquxbaz" == replace (unsafeRegex "foo" (global <> ignoreCase)) "qux" "foobarFOObaz"
+  assert $ "a table !" == replace (unsafeRegex "à" noFlags) "a" "à table !"
 
   log "match"
   assert $ match (unsafeRegex "^abc$" noFlags) "abc" == Just [Just "abc"]
