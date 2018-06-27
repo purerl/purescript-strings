@@ -25,7 +25,7 @@ noFlags = RegexFlags
   , ignoreCase: false
   , multiline: false
   , sticky: false
-  , unicode: false
+  , unicode: true
   }
 
 -- | Only global flag set to true
@@ -35,7 +35,7 @@ global = RegexFlags
   , ignoreCase: false
   , multiline: false
   , sticky: false
-  , unicode: false
+  , unicode: true
   }
 
 -- | Only ignoreCase flag set to true
@@ -45,7 +45,7 @@ ignoreCase = RegexFlags
   , ignoreCase: true
   , multiline: false
   , sticky: false
-  , unicode: false
+  , unicode: true
   }
 
 -- | Only multiline flag set to true
@@ -55,7 +55,7 @@ multiline = RegexFlags
   , ignoreCase: false
   , multiline: true
   , sticky: false
-  , unicode: false
+  , unicode: true
   }
 
 -- | Only sticky flag set to true
@@ -65,17 +65,17 @@ sticky = RegexFlags
   , ignoreCase: false
   , multiline: false
   , sticky: true
-  , unicode: false
+  , unicode: true
   }
 
--- | Only unicode flag set to true
-unicode :: RegexFlags
-unicode = RegexFlags
+-- | Disable unicode flag
+noUnicode :: RegexFlags
+noUnicode = RegexFlags
   { global: false
   , ignoreCase: false
   , multiline: false
   , sticky: false
-  , unicode: true
+  , unicode: false
   }
 
 instance semigroupRegexFlags :: Semigroup RegexFlags where
