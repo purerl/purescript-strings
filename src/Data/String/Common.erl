@@ -23,7 +23,8 @@ toLower(S) -> unicode:characters_to_binary(string:to_lower(unicode:characters_to
 
 toUpper(S) -> unicode:characters_to_binary(string:to_upper(unicode:characters_to_list(S))).
 
-trim(S) -> re:replace(S, "^\\s*(.*?)\\s*$","\\1", [{return, binary}]).
+% trim doesn't handle multi-line input
+%trim(S) -> re:replace(S, "^\\s*(.*?)\\s*$","\\1", [{return, binary}]).
 
 joinWith(S, XS) ->
   XS1 = lists:map(fun unicode:characters_to_list/1, array:to_list(XS)),
