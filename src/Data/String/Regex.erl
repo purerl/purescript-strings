@@ -12,8 +12,8 @@ flags_to_options([$y|Flags], Acc) -> flags_to_options(Flags, [anchored|Acc]); %%
 flags_to_options([$u|Flags], Acc) -> flags_to_options(Flags, [ucp|[unicode|Acc]]);
 flags_to_options(_,_) -> err.
 
-is_global(S) -> case string:chr(unicode:characters_to_list(S), $g) of
-  0 -> false;
+is_global(S) -> case string:find(S, <<"g"/utf8>>) of
+  nomatch -> false;
   _ -> true
 end.
 
@@ -55,6 +55,7 @@ end.
 replace({R,{_,F}},S1,S2) ->
   G = case is_global(F) of true -> [global]; false -> [] end,
   re:replace(S2,R,S1,G++[{return,binary}]).
+
 % TODO
 '_replaceBy'(_Just,_Nothing,{_R,_},_F,_S2) -> error("_replaceBy not supported").
 
