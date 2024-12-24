@@ -63,9 +63,9 @@ replace({R,{_,F}},S1,S2) ->
   _ -> Nothing
 end.
 
-split({R,RS},S) ->
+split({R,{RS,_Flags}},S) ->
   Res = re:split(S,R),
   Res1 = case RS of
-    "" -> lists:droplast(Res);
+    <<"">> -> lists:droplast(Res);
     _ -> Res end,
   array:from_list(Res1).

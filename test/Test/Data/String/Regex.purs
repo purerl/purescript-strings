@@ -45,8 +45,8 @@ testStringRegex = do
   assert $ search (unsafeRegex "d" noFlags) "abc" == Nothing
 
   log "split"
-  -- assert $ split (unsafeRegex "" noFlags) "" == []
-  -- assert $ split (unsafeRegex "" noFlags) "abc" == ["a", "b", "c"]
+  assert $ split (unsafeRegex "" noFlags) "" == []
+  assert $ split (unsafeRegex "" noFlags) "abc" == ["a", "b", "c"]
   assert $ split (unsafeRegex "b" noFlags) "" == [""]
   assert $ split (unsafeRegex "b" noFlags) "abc" == ["a", "c"]
 
