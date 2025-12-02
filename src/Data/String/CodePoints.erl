@@ -4,7 +4,10 @@
        , '_fromCodePointArray'/2
        , '_singleton'/1
        , '_take'/1
-       , '_toCodePointArray'/1]).
+       , '_toCodePointArray'/1
+       , uncons/1,
+       take/3
+    ]).
 
 '_unsafeCodePointAt0'(_Fallback) -> fun (Str) ->
     case string:next_codepoint(Str) of
@@ -50,3 +53,9 @@ take(N, S, Cs) ->
         array:from_list(unicode:characters_to_list(Str, utf8))
     end
 end.
+
+uncons(Str) ->
+    case string:next_codepoint(Str) of
+        [CP|Rest] -> {just, #{head => CP, tail => Rest}};
+        _ -> {nothing}
+    end.
